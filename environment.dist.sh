@@ -13,4 +13,4 @@ export COVERALLS_REPO_TOKEN=''
 
 # Aliases
 alias compose="docker-compose -f docker-compose.yml"
-alias manage="docker-compose -f docker-compose.yml exec web python3 manage.py"
+alias manage="compose exec web python3 manage.py"
