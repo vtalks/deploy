@@ -1,7 +1,3 @@
-up:
-	# docker-compose up -d --build
-	# docker-compose run --rm web python3 manage.py createsuperuser
-
-down:
-	# docker-compose down --volumes --remove-orphans --rmi all
-	# docker volume prune -f
+.PHONY: help
+help:	## Show this help
+	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
