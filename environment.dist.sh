@@ -1,7 +1,16 @@
 #!/usr/bin/env bash
 
-# virtualenv
-source ../.venv/bin/activate
+# Use virtualenv
+# source ../.venv/bin/activate
+
+# Use a docker machine (remote host)
+# eval $(docker-machine env vtalks)
+
+# Unset docker machine configuration
+# unset DOCKER_TLS_VERIFY
+# unset DOCKER_HOST
+# unset DOCKER_CERT_PATH
+# unset DOCKER_MACHINE_NAME
 
 # Twitter
 export TWITTER_TOKEN=''
