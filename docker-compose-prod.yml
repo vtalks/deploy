@@ -15,4 +15,6 @@ services:
       - "5432"
 
   web:
+    ports:
+      - "8000"
     image: vtalks/web:latest
