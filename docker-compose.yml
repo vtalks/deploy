@@ -1,6 +1,24 @@
 version: '3.3'
 
+volumes:
+
+  postgres-data:
+    driver: local
+
 services:
+
+  postgres:
+    container_name: vtalksnet_postgres
+    hostname: postgres
+    restart: on-failure
+    image: postgres:alpine
+    ports:
+      - "5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ../.backup:/backup
+      - ./postgres/restoredb.sh:/restoredb.sh:ro
+      - ./postgres/dumpdb.sh:/dumpdb.sh:ro
 
   nginx:
     container_name: vtalksnet_nginx
@@ -12,14 +30,9 @@ services:
     depends_on:
       - postgres
       - web
-
-  postgres:
-    container_name: vtalksnet_postgres
-    hostname: postgres
-    restart: on-failure
-    image: postgres:alpine
-    ports:
-      - "5432"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/nginx.vh.default.conf:/etc/nginx/conf.d/default.conf:ro
 
   web:
     container_name: vtalksnet_web
