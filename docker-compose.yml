@@ -42,6 +42,7 @@ services:
     ports:
       - "8000"
     environment:
+      - DJANGO_SETTINGS_MODULE
       - TWITTER_TOKEN
       - TWITTER_SECRET
       - YOUTUBE_API_KEY
