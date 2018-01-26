@@ -7,6 +7,16 @@ volumes:
 
 services:
 
+  nats:
+    container_name: vtalksnet_nats
+    hostname: nats
+    restart: on-failure
+    image: nats
+    ports:
+      - "4222:4222"
+      - "8222:8222"
+      - "6222:6222"
+
   postgres:
     container_name: vtalksnet_postgres
     hostname: postgres
@@ -49,3 +59,17 @@ services:
       - COVERALLS_REPO_TOKEN
     depends_on:
       - postgres
+      - nats
+
+  twitter-worker:
+    container_name: vtalksnet_twitter_worker
+    hostname: twitter-worker
+    restart: on-failure
+    image: vtalks/twitter-worker:latest
+    environment:
+      - TWITTER_TOKEN
+      - TWITTER_SECRET
+      - YOUTUBE_API_KEY
+    depends_on:
+      - web
+      - nats

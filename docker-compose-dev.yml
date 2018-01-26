@@ -2,6 +2,11 @@ version: '3.3'
 
 services:
 
+  twitter-worker:
+    build: ../twitter_worker
+    volumes:
+      - ../twitter_worker:/opt/twitter_worker
+
   postgres:
     ports:
       - "5432:5432"
