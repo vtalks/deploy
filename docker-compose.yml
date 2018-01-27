@@ -30,6 +30,14 @@ services:
       - ./postgres/restoredb.sh:/restoredb.sh:ro
       - ./postgres/dumpdb.sh:/dumpdb.sh:ro
 
+  adminer:
+    container_name: vtalksnet_adminer
+    hostname: adminer
+    restart: on-failure
+    image: adminer
+    ports:
+      - "8080:8080"
+
   nginx:
     container_name: vtalksnet_nginx
     hostname: nginx
