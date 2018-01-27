@@ -72,11 +72,12 @@ services:
   twitter-worker:
     container_name: vtalksnet_twitter_worker
     hostname: twitter-worker
-    restart: on-failure
     image: vtalks/twitter-worker:latest
     environment:
-      - TWITTER_TOKEN
-      - TWITTER_SECRET
+      - TLKSIO_TWITTER_TOKEN
+      - TLKSIO_TWITTER_SECRET
+      - TLKSIO_TWITTER_ACCESS_TOKEN
+      - TLKSIO_TWITTER_ACCESS_SECRET
       - YOUTUBE_API_KEY
     depends_on:
       - web
