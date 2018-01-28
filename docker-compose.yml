@@ -26,9 +26,14 @@ services:
       - "5432"
     volumes:
       - postgres-data:/var/lib/postgresql/data
-      - ../.backup:/backup
-      - ./postgres/restoredb.sh:/restoredb.sh:ro
-      - ./postgres/dumpdb.sh:/dumpdb.sh:ro
+
+  adminer:
+    container_name: vtalksnet_adminer
+    hostname: adminer
+    restart: on-failure
+    image: adminer
+    ports:
+      - "8080:8080"
 
   nginx:
     container_name: vtalksnet_nginx
@@ -64,11 +69,12 @@ services:
   twitter-worker:
     container_name: vtalksnet_twitter_worker
     hostname: twitter-worker
-    restart: on-failure
     image: vtalks/twitter-worker:latest
     environment:
-      - TWITTER_TOKEN
-      - TWITTER_SECRET
+      - TLKSIO_TWITTER_TOKEN
+      - TLKSIO_TWITTER_SECRET
+      - TLKSIO_TWITTER_ACCESS_TOKEN
+      - TLKSIO_TWITTER_ACCESS_SECRET
       - YOUTUBE_API_KEY
     depends_on:
       - web

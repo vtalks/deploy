@@ -5,14 +5,20 @@ services:
   postgres:
     ports:
       - "5432"
+    volumes:
+      - /opt/backup:/backup
+      - /opt/postgres/restoredb.sh:/restoredb.sh:ro
+      - /opt/postgres/dumpdb.sh:/dumpdb.sh:ro
+    # docker-machine scp -r ./deploy/postgres vtalks:/opt/postgres
+    # docker-machine scp -r ./backup vtalks:/opt/backup
 
   nginx:
     ports:
       - "80:80"
-  #   volumes:
-  #       - /opt/nginx/nginx.conf:/etc/nginx/nginx.conf
-  #       - /opt/nginx/nginx.vh.default.conf:/etc/nginx/conf.d/default.conf
-  #       - /opt/static:/static
+    volumes:
+        - /opt/nginx/nginx.conf:/etc/nginx/nginx.conf
+        - /opt/nginx/nginx.vh.default.conf:/etc/nginx/conf.d/default.conf
+        - /opt/static:/static
   # docker-machine scp -r ./deploy/nginx vtalks:/opt/nginx
   # docker-machine scp -r ./web/static vtalks:/opt/static
 
