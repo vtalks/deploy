@@ -5,6 +5,12 @@ services:
   postgres:
     ports:
       - "5432"
+    volumes:
+      - /opt/backup:/backup
+      - /opt/postgres/restoredb.sh:/restoredb.sh:ro
+      - /opt/postgres/dumpdb.sh:/dumpdb.sh:ro
+    # docker-machine scp -r ./deploy/postgres vtalks:/opt/postgres
+    # docker-machine scp -r ./backup vtalks:/opt/backup
 
   nginx:
     ports:

@@ -10,6 +10,10 @@ services:
   postgres:
     ports:
       - "5432:5432"
+    volumes:
+      - ../.backup:/backup
+      - ./postgres/restoredb.sh:/restoredb.sh:ro
+      - ./postgres/dumpdb.sh:/dumpdb.sh:ro
 
   nginx:
     ports:

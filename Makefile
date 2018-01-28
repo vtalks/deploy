@@ -5,5 +5,7 @@ help:	## Show this help
 .PHONY: static
 static:	## Static files
 	docker-machine scp -r ./nginx vtalks:/opt/nginx
-	docker-machine scp -r ../vtalks.net/static vtalks:/opt/static
+	docker-machine scp -r ./postgres vtalks:/opt/postgres
+	docker-machine scp -r ../.backup vtalks:/opt/backup
+	docker-machine scp -r ../vtalks.net/static vtalks:/opt
 

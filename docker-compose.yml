@@ -26,9 +26,6 @@ services:
       - "5432"
     volumes:
       - postgres-data:/var/lib/postgresql/data
-      - ../.backup:/backup
-      - ./postgres/restoredb.sh:/restoredb.sh:ro
-      - ./postgres/dumpdb.sh:/dumpdb.sh:ro
 
   adminer:
     container_name: vtalksnet_adminer
