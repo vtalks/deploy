@@ -7,6 +7,14 @@ volumes:
 
 services:
 
+  portainer:
+    container_name: vtalksnet_portainer
+    hostname: portainer
+    restart: on-failure
+    image: portainer/portainer
+    ports:
+      - "9000:9000"
+
   nats:
     container_name: vtalksnet_nats
     hostname: nats
@@ -62,6 +70,9 @@ services:
       - TWITTER_SECRET
       - YOUTUBE_API_KEY
       - COVERALLS_REPO_TOKEN
+      - MAILGUN_API_KEY
+      - MAILGUN_SMTP_PASSWORD
+      - MAILGUN_SMTP_USER
     depends_on:
       - postgres
       - nats
