@@ -90,3 +90,13 @@ services:
     depends_on:
       - web
       - nats
+
+  facebook-worker:
+    container_name: vtalksnet_facebook_worker
+    hostname: facebook-worker
+    image: vtalks/facebook-worker:latest
+    environment:
+      - YOUTUBE_API_KEY
+    depends_on:
+      - web
+      - nats
