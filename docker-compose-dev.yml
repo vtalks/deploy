@@ -2,11 +2,6 @@ version: '3.3'
 
 services:
 
-  twitter-worker:
-    build: ../twitter_worker
-    volumes:
-      - ../twitter_worker:/opt/twitter_worker
-
   postgres:
     ports:
       - "5432:5432"
@@ -29,3 +24,23 @@ services:
       - "8000:8000"
     volumes:
       - ../vtalks.net:/opt/vtalks.net/
+
+  updater-worker:
+    build: ../updater_worker
+    volumes:
+      - ../updater_worker:/opt/updater_worker
+
+  twitter-worker:
+    build: ../twitter_worker
+    volumes:
+      - ../twitter_worker:/opt/twitter_worker
+
+  facebook-worker:
+    build: ../facebook_worker
+    volumes:
+      - ../facebook_worker:/opt/facebook_worker
+
+  linkedin-worker:
+    build: ../linkedin_worker
+    volumes:
+      - ../linkedin_worker:/opt/linkedin_worker
