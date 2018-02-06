@@ -44,6 +44,8 @@ services:
     image: adminer
     ports:
       - "8080:8080"
+    depends_on:
+      - postgres
 
   nginx:
     container_name: vtalksnet_nginx
@@ -77,6 +79,15 @@ services:
       - MAILGUN_SMTP_USER
     depends_on:
       - postgres
+
+  updater-worker:
+    container_name: vtalksnet_updater_worker
+    hostname: updater-worker
+    image: vtalks/updater-worker:latest
+    environment:
+      - YOUTUBE_API_KEY
+    depends_on:
+      - web
       - nats
 
   twitter-worker:
