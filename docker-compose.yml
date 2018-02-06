@@ -79,6 +79,7 @@ services:
       - MAILGUN_SMTP_USER
     depends_on:
       - postgres
+      - nginx
 
   updater-worker:
     container_name: vtalksnet_updater_worker
