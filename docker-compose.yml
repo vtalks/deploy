@@ -82,8 +82,6 @@ services:
     container_name: vtalksnet_updater_worker
     hostname: updater-worker
     image: vtalks/updater-worker:latest
-    environment:
-      - YOUTUBE_API_KEY
     depends_on:
       - web
       - nats
@@ -97,7 +95,6 @@ services:
       - TLKSIO_TWITTER_SECRET
       - TLKSIO_TWITTER_ACCESS_TOKEN
       - TLKSIO_TWITTER_ACCESS_SECRET
-      - YOUTUBE_API_KEY
     depends_on:
       - web
       - nats
@@ -106,8 +103,14 @@ services:
     container_name: vtalksnet_facebook_worker
     hostname: facebook-worker
     image: vtalks/facebook-worker:latest
-    environment:
-      - YOUTUBE_API_KEY
+    depends_on:
+      - web
+      - nats
+
+  linkedin-worker:
+    container_name: vtalksnet_linkedin_worker
+    hostname: linkedin-worker
+    image: vtalks/linkedin-worker:latest
     depends_on:
       - web
       - nats
