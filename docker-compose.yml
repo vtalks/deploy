@@ -59,7 +59,9 @@ services:
       - "9200:9200"
       - "9300:9300"
     environment:
-      - "discovery.type=single-node"
+      - discovery.type=single-node
+      - cluster.name=vtalks-elasticsearch
+      - bootstrap.memory_lock=true
     volumes:
       - elasticsearch-data:/usr/share/elasticsearch/data
 
