@@ -10,6 +10,15 @@ services:
       - /home/raul/Projects/vtalks/deploy/postgres/restoredb.sh:/restoredb.sh:ro
       - /home/raul/Projects/vtalks/deploy/postgres/dumpdb.sh:/dumpdb.sh:ro
 
+  elasticsearh:
+    ports:
+      - "9200"
+      - "9300"
+    volumes:
+      - /home/raul/Projects/vtalks/deploy/elasticsearch/create_index.sh:/create_index.sh:ro
+      - /home/raul/Projects/vtalks/deploy/elasticsearch/delete_index.sh:/delete_index.sh:ro
+      - /home/raul/Projects/vtalks/deploy/elasticsearch/status.sh:/status.sh:ro
+
   nginx:
     ports:
       - "80:80"
