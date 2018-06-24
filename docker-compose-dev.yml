@@ -10,6 +10,14 @@ services:
       - ./postgres/restoredb.sh:/restoredb.sh:ro
       - ./postgres/dumpdb.sh:/dumpdb.sh:ro
 
+  elasticsearch:
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    volumes:
+      - ./elasticsearch/create_index.sh:/create_index.sh:ro
+      - ./elasticsearch/status.sh:/status.sh:ro
+
   nginx:
     ports:
       - "80:80"
