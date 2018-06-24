@@ -10,7 +10,7 @@ services:
       - /home/raul/Projects/vtalks/deploy/postgres/restoredb.sh:/restoredb.sh:ro
       - /home/raul/Projects/vtalks/deploy/postgres/dumpdb.sh:/dumpdb.sh:ro
 
-  elasticsearh:
+  elasticsearch:
     ports:
       - "9200"
       - "9300"
