@@ -14,6 +14,8 @@ services:
     ports:
       - "9200"
       - "9300"
+    environment:
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     volumes:
       - /home/raul/Projects/vtalks/deploy/elasticsearch/create_index.sh:/create_index.sh:ro
       - /home/raul/Projects/vtalks/deploy/elasticsearch/delete_index.sh:/delete_index.sh:ro
