@@ -16,7 +16,7 @@ services:
     restart: on-failure
     image: portainer/portainer
     ports:
-      - "9000:9000"
+      - "9000"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 
@@ -26,9 +26,9 @@ services:
     restart: on-failure
     image: nats
     ports:
-      - "4222:4222"
-      - "8222:8222"
-      - "6222:6222"
+      - "4222"
+      - "8222"
+      - "6222"
 
   postgres:
     container_name: vtalksnet_postgres
@@ -46,7 +46,7 @@ services:
     restart: on-failure
     image: adminer
     ports:
-      - "8080:8080"
+      - "8080"
     depends_on:
       - postgres
 
@@ -64,6 +64,14 @@ services:
       - bootstrap.memory_lock=true
     volumes:
       - elasticsearch-data:/usr/share/elasticsearch/data
+
+  kibana:
+    container_name: vtalksnet_kibana
+    hostname: kibana
+    restart: on-failure
+    image: docker.elastic.co/kibana/kibana-oss:6.3.0
+    ports:
+      - "5601"
 
   nginx:
     container_name: vtalksnet_nginx

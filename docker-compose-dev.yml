@@ -19,6 +19,10 @@ services:
       - ./elasticsearch/delete_index.sh:/delete_index.sh:ro
       - ./elasticsearch/status.sh:/status.sh:ro
 
+  kibana:
+    ports:
+      - "5601:5601"
+
   nginx:
     ports:
       - "80:80"
