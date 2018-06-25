@@ -15,7 +15,7 @@ services:
       - "9200"
       - "9300"
     environment:
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - "ES_JAVA_OPTS=-Xms256m -Xmx256m"
     volumes:
       - /home/raul/Projects/vtalks/deploy/elasticsearch/create_index.sh:/create_index.sh:ro
       - /home/raul/Projects/vtalks/deploy/elasticsearch/delete_index.sh:/delete_index.sh:ro
