@@ -11,6 +11,21 @@ curl -X PUT "localhost:9200/vtalks" -H 'Content-Type: application/json' -d'
     "mappings" : {
         "talk" : {
             "properties" : {
+                "code": {
+                    "type": "text"
+                },
+                "title": {
+                    "type": "text"
+                },
+                "description": {
+                    "type": "text"
+                },
+                "slug": {
+                    "type": "text"
+                },
+                "duration": {
+                    "type": "text"
+                },
                 "created" : {
                     "type" : "date"
                 },
