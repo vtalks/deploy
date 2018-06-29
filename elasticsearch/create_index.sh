@@ -22,6 +22,9 @@ curl -X PUT "localhost:9200/vtalks" -H 'Content-Type: application/json' -d'
                 },
                 "hacker_hot": {
                     "type": "float"
+                },
+                "tags": {
+                    "type": "keyword"
                 }
             }
         }
