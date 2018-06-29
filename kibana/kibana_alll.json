@@ -1,0 +1,25 @@
+[
+  {
+    "_id": "53999790-7bb2-11e8-a031-d3f01b263163",
+    "_type": "search",
+    "_source": {
+      "title": "All Data Search",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "_source"
+      ],
+      "sort": [
+        "created",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"0bd46740-7b36-11e8-85cd-57ada2619cc0\",\"highlightAll\":true,\"version\":true,\"query\":{\"query\":\"\",\"language\":\"kuery\"},\"filter\":[]}"
+      }
+    },
+    "_meta": {
+      "savedObjectVersion": 2
+    }
+  }
+]
