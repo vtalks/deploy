@@ -11,26 +11,40 @@ curl -X PUT "localhost:9200/vtalks" -H 'Content-Type: application/json' -d'
     "mappings" : {
         "talk" : {
             "properties" : {
-                "code": {
-                    "type": "text"
+                "id": {
+                    "type": "integer"
                 },
                 "title": {
-                    "type": "text"
+                    "type": "text",
+                    "fielddata": true
                 },
                 "description": {
-                    "type": "text"
+                    "type": "text",
+                    "fielddata": true
                 },
-                "slug": {
-                    "type": "text"
+                "view_count": {
+                    "type": "long"
                 },
-                "duration": {
-                    "type": "text"
+                "like_count": {
+                    "type": "long"
                 },
-                "created" : {
-                    "type" : "date"
+                "dislike_count": {
+                    "type": "long"
                 },
-                "updated" : {
-                    "type" : "date"
+                "favorite_count": {
+                    "type": "long"
+                },
+                "youtube_view_count": {
+                    "type": "long"
+                },
+                "youtube_like_count": {
+                    "type": "long"
+                },
+                "youtube_dislike_count": {
+                    "type": "long"
+                },
+                "youtube_favorite_count": {
+                    "type": "long"
                 },
                 "wilsonscore_rank": {
                     "type": "float"
@@ -38,8 +52,38 @@ curl -X PUT "localhost:9200/vtalks" -H 'Content-Type: application/json' -d'
                 "hacker_hot": {
                     "type": "float"
                 },
+                "channel": {
+                    "properties": {
+                        "id": { "type": "integer" },
+                        "title": {
+                            "type": "text",
+                            "fielddata": true
+                        },
+                        "description": {
+                            "type": "text",
+                            "fielddata": true
+                        }
+                    }
+                },
+                "playlist": {
+                    "properties": {
+                        "id": { "type": "integer" },
+                        "title": {
+                            "type": "text",
+                            "fielddata": true
+                        },
+                        "description": {
+                            "type": "text",
+                            "fielddata": true
+                        }
+                    }
+                },
                 "tags": {
                     "type": "keyword"
+                },
+                "created" : {
+                    "type" : "date",
+                    "format": "epoch_millis"
                 }
             }
         }
