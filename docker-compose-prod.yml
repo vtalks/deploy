@@ -32,4 +32,6 @@ services:
   web:
     ports:
       - "8000"
+    volumes:
+      - /home/raul/Projects/vtalks/.dataset:/.dataset
     image: vtalks/web:latest
