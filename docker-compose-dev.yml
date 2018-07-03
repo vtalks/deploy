@@ -27,7 +27,6 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ../.dataset:/.dataset
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - ./nginx/nginx.vh.default.conf:/etc/nginx/conf.d/default.conf:ro
       - ../vtalks.net/static:/static
@@ -37,6 +36,7 @@ services:
     ports:
       - "8000:8000"
     volumes:
+      - ../.dataset:/.dataset
       - ../vtalks.net:/opt/vtalks.net/
 
   updater-worker:
