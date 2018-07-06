@@ -1,2 +1,5 @@
 alias mcp="manage create_playlist"
+alias mfp="manage filter_playlists"
 alias miv="manage index_all_videos"
+alias mfv="manage filter_talks"
+alias muv="manage upsearch_talks"
