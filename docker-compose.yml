@@ -146,6 +146,8 @@ services:
     hostname: pipeline
     restart: always
     image: vtalks/pipeline:latest
+    environment:
+      - YOUTUBE_API_KEY
     ports:
       - "8082"
     volumes:
