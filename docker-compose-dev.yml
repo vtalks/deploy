@@ -63,3 +63,5 @@ services:
     build: ../pipeline
     ports:
       - "8082:8082"
+    volumes:
+      - ../pipeline:/opt/pipeline/

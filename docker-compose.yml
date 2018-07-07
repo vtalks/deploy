@@ -148,7 +148,5 @@ services:
     image: vtalks/pipeline:latest
     ports:
       - "8082"
-    depends_on:
-      - web
     volumes:
       - pipeline-data:/usr/share/pipeline/data
