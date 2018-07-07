@@ -35,3 +35,8 @@ services:
     volumes:
       - /home/raul/Projects/vtalks/.dataset:/.dataset
     image: vtalks/web:latest
+
+  pipeline:
+    ports:
+      - "8082"
+    image: vtalks/pipeline:latest

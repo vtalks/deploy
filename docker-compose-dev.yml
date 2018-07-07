@@ -58,3 +58,8 @@ services:
     build: ../linkedin_worker
     volumes:
       - ../linkedin_worker:/opt/linkedin_worker
+
+  pipeline:
+    build: ../pipeline
+    ports:
+      - "8082:8082"

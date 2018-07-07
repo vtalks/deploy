@@ -8,6 +8,9 @@ volumes:
   elasticsearch-data:
     driver: local
 
+  pipeline-data:
+    driver: local
+
 services:
 
   portainer:
@@ -137,3 +140,15 @@ services:
     image: vtalks/linkedin-worker:latest
     depends_on:
       - web
+
+  pipeline:
+    container_name: vtalksnet_data_pipeline
+    hostname: pipeline
+    restart: always
+    image: vtalks/pipeline:latest
+    ports:
+      - "8082"
+    depends_on:
+      - web
+    volumes:
+      - pipeline-data:/usr/share/pipeline/data
