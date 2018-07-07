@@ -151,4 +151,4 @@ services:
     ports:
       - "8082"
     volumes:
-      - pipeline-data:/usr/share/pipeline/data
+      - pipeline-data:/pipeline/data
