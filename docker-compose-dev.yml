@@ -74,4 +74,4 @@ services:
 
   pipeline-scheduler:
     volumes:
-      - ../pipeline_scheduler:/opt/pipeline:_scheduler
+      - ../pipeline_scheduler:/opt/pipeline_scheduler
