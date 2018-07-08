@@ -71,3 +71,7 @@ services:
       - "8082:8082"
     volumes:
       - ../pipeline:/opt/pipeline/
+
+  pipeline-scheduler:
+    volumes:
+      - ../pipeline_scheduler:/opt/pipeline:_scheduler
