@@ -152,3 +152,8 @@ services:
       - "8082"
     volumes:
       - pipeline-data:/pipeline/data
+
+  pipeline-scheduler:
+    container_name: vtalksnet_pipeline_scheduler
+    hostname: pipeline-scheduler
+    image: vtalks/pipeline-scheduler:latest
