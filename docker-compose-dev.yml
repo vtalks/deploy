@@ -69,6 +69,6 @@ services:
     build: ../pipeline
     ports:
       - "8082:8082"
-      - "9001:9001"
     volumes:
       - ../pipeline:/opt/pipeline/
+      - pipeline-data:/opt/pipeline/data

@@ -39,5 +39,6 @@ services:
   pipeline:
     ports:
       - "8082"
-      - "9001"
     image: vtalks/pipeline:latest
+    volumes:
+      - pipeline-data:/opt/pipeline/data
