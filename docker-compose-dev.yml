@@ -69,10 +69,6 @@ services:
     build: ../pipeline
     ports:
       - "8082:8082"
+      - "9001:9001"
     volumes:
       - ../pipeline:/opt/pipeline/
-
-  pipeline-scheduler:
-    build: ../pipeline_scheduler
-    volumes:
-      - ../pipeline_scheduler:/opt/pipeline_scheduler

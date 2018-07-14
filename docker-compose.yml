@@ -148,12 +148,11 @@ services:
     image: vtalks/pipeline:latest
     environment:
       - YOUTUBE_API_KEY
+      - PYTHONPATH=$PYTHONPATH:/opt/pipeline/tasks/
     ports:
       - "8082"
+      - "9001"
     volumes:
-      - pipeline-data:/pipeline/data
-
-  pipeline-scheduler:
-    container_name: vtalksnet_pipeline_scheduler
-    hostname: pipeline-scheduler
-    image: vtalks/pipeline-scheduler:latest
+      - pipeline-data:/opt/pipeline/data
+      - ./pipeline/supervisord.conf:/etc/supervisord.conf:ro
+      - ./pipeline/supervisord-luigi.ini:/etc/supervisor.d/supervisord-luigi.ini:ro
