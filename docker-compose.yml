@@ -22,6 +22,11 @@ services:
       - "9000"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+    logging:
+      driver: json-file
+      options:
+        max-size: 100K
+
 
   nats:
     container_name: vtalksnet_nats
@@ -32,6 +37,10 @@ services:
       - "4222"
       - "8222"
       - "6222"
+    logging:
+      driver: json-file
+      options:
+        max-size: 100K
 
   postgres:
     container_name: vtalksnet_postgres
@@ -42,6 +51,10 @@ services:
       - "5432"
     volumes:
       - postgres-data:/var/lib/postgresql/data
+    logging:
+      driver: json-file
+      options:
+        max-size: 100K
 
   adminer:
     container_name: vtalksnet_adminer
@@ -52,6 +65,10 @@ services:
       - "8080"
     depends_on:
       - postgres
+    logging:
+      driver: json-file
+      options:
+        max-size: 100K
 
   elasticsearch:
     container_name: vtalksnet_elasticsearch
@@ -67,6 +84,10 @@ services:
       - bootstrap.memory_lock=true
     volumes:
       - elasticsearch-data:/usr/share/elasticsearch/data
+    logging:
+      driver: json-file
+      options:
+        max-size: 100K
 
   kibana:
     container_name: vtalksnet_kibana
@@ -75,6 +96,12 @@ services:
     image: docker.elastic.co/kibana/kibana-oss:6.3.0
     ports:
       - "5601"
+    depends_on:
+      - elasticsearch
+    logging:
+      driver: json-file
+      options:
+        max-size: 100K
 
   nginx:
     container_name: vtalksnet_nginx
@@ -86,6 +113,10 @@ services:
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - ./nginx/nginx.vh.default.conf:/etc/nginx/conf.d/default.conf:ro
+    logging:
+      driver: json-file
+      options:
+        max-size: 100K
 
   web:
     container_name: vtalksnet_web
@@ -105,6 +136,10 @@ services:
     depends_on:
       - postgres
       - nginx
+    logging:
+      driver: json-file
+      options:
+        max-size: 100K
 
   updater-worker:
     container_name: vtalksnet_updater_worker
@@ -114,6 +149,10 @@ services:
       - YOUTUBE_API_KEY
     depends_on:
       - web
+    logging:
+      driver: json-file
+      options:
+        max-size: 100K
 
   twitter-worker:
     container_name: vtalksnet_twitter_worker
@@ -126,6 +165,10 @@ services:
       - TLKSIO_TWITTER_ACCESS_SECRET
     depends_on:
       - web
+    logging:
+      driver: json-file
+      options:
+        max-size: 100K
 
   facebook-worker:
     container_name: vtalksnet_facebook_worker
@@ -133,6 +176,10 @@ services:
     image: vtalks/facebook-worker:latest
     depends_on:
       - web
+    logging:
+      driver: json-file
+      options:
+        max-size: 100K
 
   linkedin-worker:
     container_name: vtalksnet_linkedin_worker
@@ -140,6 +187,10 @@ services:
     image: vtalks/linkedin-worker:latest
     depends_on:
       - web
+    logging:
+      driver: json-file
+      options:
+        max-size: 100K
 
   pipeline:
     container_name: vtalksnet_data_pipeline
@@ -147,6 +198,7 @@ services:
     restart: always
     image: vtalks/pipeline:latest
     environment:
+      - PYTHONUNBUFFERED=1
       - YOUTUBE_API_KEY
       - PYTHONPATH=$PYTHONPATH:/opt/pipeline/tasks/
     ports:
@@ -156,3 +208,7 @@ services:
       - pipeline-data:/opt/pipeline/data
       - ./pipeline/supervisord.conf:/etc/supervisord.conf:ro
       - ./pipeline/supervisord-luigi.ini:/etc/supervisor.d/supervisord-luigi.ini:ro
+    logging:
+      driver: json-file
+      options:
+        max-size: 100K
