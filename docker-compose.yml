@@ -115,12 +115,12 @@ services:
     logging:
       driver: json-file
       options:
-        max-size: 1m
+        max-size: 5m
 
   web:
     container_name: vtalksnet_web
     hostname: web
-    restart: always
+    restart: on-failure
     image: vtalks/web:latest
     ports:
       - "8000"
@@ -143,11 +143,10 @@ services:
   updater-worker:
     container_name: vtalksnet_updater_worker
     hostname: updater-worker
+    restart: on-failure
     image: vtalks/updater-worker:latest
     environment:
       - YOUTUBE_API_KEY
-    depends_on:
-      - web
     logging:
       driver: json-file
       options:
@@ -156,14 +155,13 @@ services:
   twitter-worker:
     container_name: vtalksnet_twitter_worker
     hostname: twitter-worker
+    restart: on-failure
     image: vtalks/twitter-worker:latest
     environment:
       - TLKSIO_TWITTER_TOKEN
       - TLKSIO_TWITTER_SECRET
       - TLKSIO_TWITTER_ACCESS_TOKEN
       - TLKSIO_TWITTER_ACCESS_SECRET
-    depends_on:
-      - web
     logging:
       driver: json-file
       options:
@@ -172,9 +170,8 @@ services:
   facebook-worker:
     container_name: vtalksnet_facebook_worker
     hostname: facebook-worker
+    restart: on-failure
     image: vtalks/facebook-worker:latest
-    depends_on:
-      - web
     logging:
       driver: json-file
       options:
@@ -183,9 +180,8 @@ services:
   linkedin-worker:
     container_name: vtalksnet_linkedin_worker
     hostname: linkedin-worker
+    restart: on-failure
     image: vtalks/linkedin-worker:latest
-    depends_on:
-      - web
     logging:
       driver: json-file
       options:
@@ -210,4 +206,4 @@ services:
     logging:
       driver: json-file
       options:
-        max-size: 1m
+        max-size: 5m
