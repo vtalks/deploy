@@ -27,7 +27,6 @@ services:
       options:
         max-size: 100K
 
-
   nats:
     container_name: vtalksnet_nats
     hostname: nats
@@ -116,7 +115,7 @@ services:
     logging:
       driver: json-file
       options:
-        max-size: 100K
+        max-size: 1m
 
   web:
     container_name: vtalksnet_web
@@ -211,4 +210,4 @@ services:
     logging:
       driver: json-file
       options:
-        max-size: 100K
+        max-size: 1m
