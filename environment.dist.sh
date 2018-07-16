@@ -23,6 +23,10 @@ export TWITTER_SECRET=''
 # Youtube
 export YOUTUBE_API_KEY=''
 
+# Docker Hub
+export DOCKER_HUB_USERNAME=''
+export DOCKER_HUB_PASSWORD=''
+
 # Aliases
 # alias compose="docker-compose -f docker-compose.yml -f docker-compose-dev.yml"
 # alias compose="docker-compose -f docker-compose.yml -f docker-compose-prod.yml"
