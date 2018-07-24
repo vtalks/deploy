@@ -200,9 +200,9 @@ services:
       - "8082"
       - "9001"
     volumes:
-      - pipeline-data:/opt/pipeline/data
       - ./pipeline/supervisord.conf:/etc/supervisord.conf:ro
       - ./pipeline/supervisord-luigi.ini:/etc/supervisor.d/supervisord-luigi.ini:ro
+      - pipeline-data:/opt/pipeline/data
     logging:
       driver: json-file
       options:
